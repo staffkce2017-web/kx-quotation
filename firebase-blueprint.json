@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile containing authentication details, display name, and system role.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique Firebase Auth user ID." },
+        "email": { "type": "string", "description": "Email address of the user." },
+        "displayName": { "type": "string", "description": "Full name or display nickname." },
+        "role": { "type": "string", "enum": ["SALES", "ACCOUNTING", "ADMIN"], "description": "User access role." },
+        "createdAt": { "type": "string", "description": "ISO timestamp when the user profile was created." }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Quotation": {
+      "title": "Quotation",
+      "description": "Quotation and booking job tracking record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Quotation ID." },
+        "quoteNumber": { "type": "string", "description": "Running quote identifier." },
+        "jobTitle": { "type": "string", "description": "Title or event name." },
+        "status": { "type": "string", "description": "Status of the quotation." },
+        "userId": { "type": "string", "description": "UID of the creator." },
+        "createdAt": { "type": "string", "description": "ISO timestamp of creation." },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update." }
+      },
+      "required": ["id", "quoteNumber", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profiles indexed by UID."
+    },
+    "/quotations/{quotationId}": {
+      "schema": { "$ref": "#/entities/Quotation" },
+      "description": "Quotation documents indexed by quotationId."
+    }
+  }
+}

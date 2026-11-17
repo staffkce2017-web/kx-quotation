@@ -1,0 +1,8 @@
+{
+  "name": "KX Quotation",
+  "description": "ระบบสร้างใบเสนอราคามาตรฐาน KX Knowledge Xchange พร้อมระบบติดตามสถานะงาน แนบสลิปชำระเงิน และประมวลผลข้อมูล",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
